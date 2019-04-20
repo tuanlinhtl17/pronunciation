@@ -1,0 +1,277 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background: #F4F4F4;
+}
+
+.navbar-right {
+  .dropdown {
+    margin-top: 5%;
+  }
+
+  .time {
+    margin-top: 4%;
+  }
+}
+
+/* forms */
+.checkbox {
+  margin-top: 2px;
+  margin-bottom: 10px;
+
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.navbar {
+  z-index: 1000;
+}
+
+/* Banner */
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 15%;
+}
+
+#landing-header h1 {
+  color: #000;
+}
+
+.slideshow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: auto;
+  padding: 0;
+}
+
+.slideshow li {
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+  background-image: url(http://jimstokescreative.com/wp/wp-content/uploads/2015/10/JSC-Book-Cover-Design-Novel.jpg)
+}
+
+.slideshow li:nth-child(2) {
+  background-image: url(https://pixbeedesign.com/wp-content/uploads/2014/02/The-gift-by-dave-donovan-3d-front-book-cover-mock-up.jpg);
+  animation-delay: 10s;
+}
+
+.slideshow li:nth-child(3) {
+  background-image: url(https://pixbeedesign.com/wp-content/uploads/2014/02/Faith-Arising-book-cover-design-PixBeeDesign-.jpg);
+  animation-delay: 20s;
+}
+
+.slideshow li:nth-child(4) {
+  background-image: url(https://pixbeedesign.com/wp-content/uploads/2014/02/Rebel-Entrepreneur-book-cover-design-PixBeeDesign.jpg);
+  animation-delay: 30s;
+}
+
+.slideshow li:nth-child(5) {
+  background-image: url(http://www.dxinerz.com/wp-content/uploads/2014/08/meditation-book-cover-design-www.dxinerz.com_.jpg);
+  animation-delay: 40s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+
+  20% {
+    opacity: 1
+  }
+
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+
+.no-cssanimations .slideshow li {
+  opacity: 1;
+}
+
+.product-list {
+  .row-border {
+    background-color: #fff;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+    margin-right: 0.3%;
+
+    button {
+      margin-right: 2%;
+
+      &:hover {
+        background-color: #C0E1FF;
+      }
+    }
+
+    .row {
+      padding-top: 2%;
+
+      img {
+        width: 120px;
+        height: 200px;
+      }
+    }
+
+    .show-product {
+      padding-top: 2%;
+    }
+  }
+}
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type: none;
+  padding: 0;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.rating-stars ul>li.star {
+  display: inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul>li.star>i.fa {
+  font-size: 2.5em;
+  /* Change the size of the stars */
+  color: #ccc;
+  /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul>li.star.hover>i.fa {
+  color: #FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul>li.star.selected>i.fa {
+  color: #FF912C;
+}
+
+/* User sign in and sign forms. */
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  height: auto;
+  margin-bottom: 15px;
+  padding: 5px 9px;
+}
+
+.activity-image {
+  width: 7%;
+  height: 7%;
+}
+
+.activity-list {
+  a {
+    text-decoration: none !important;
+    color: black;
+    font-size: 1.5em;
+  }
+}
+
+.activity-item {
+  background: #E8EAED;
+}
+
+.errors {
+  color: red;
+}
+
+.ui-menu .ui-menu-item:last-child {
+  font-weight: bold;
+}
+
+.img-autocomplete {
+  width: 10%;
+  height: 10%;
+}
+
+.ui-menu:hover {
+  color: black;
+  background-color: white;
+}
+
+.ny_books_image {
+  img {
+    width: 120px;
+    height: 200px;
+  }
+}
+
+.sentence {
+  font-size: 1.5em;
+
+  button {
+    border-radius: 50%;
+  }
+}
+
+//progress

@@ -1,0 +1,17 @@
+<div class="row row-border" id="book-list">
+  <%= pagy_nav(@pagy).html_safe %>
+
+  <% @lessons.each do |lesson| %>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <%= image_tag lesson.avatar_url %>
+      </div>
+      <div class="col-md-7">
+        <h4><%= link_to lesson.title, lesson %></h4>
+      </div>
+    </div>
+  <% end %>        
+
+  <%= pagy_nav(@pagy).html_safe %>
+</div>

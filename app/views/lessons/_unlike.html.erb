@@ -1,0 +1,7 @@
+<%= form_for(current_user.likes.find_by(lesson_id: @lesson.id),
+             method: :delete ,
+             remote: true) do |f| %>
+  <%= f.button nil, {class: "btn btn-primary"} do %>
+    <span><i class="fa fa-thumbs-up fa-1px"></i></span> <%= @lesson.likes.count.to_s + " " + "Like" %>
+  <% end %>
+<% end %>

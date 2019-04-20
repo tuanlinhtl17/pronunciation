@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Duolingo</title>
+    <%= csrf_meta_tags %>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= Gon::Base.render_data %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= value %></strong>
+      </div>
+    <% end %>
+    <%= render "layouts/header" %>
+    <%= yield %>
+  </body>
+</html>

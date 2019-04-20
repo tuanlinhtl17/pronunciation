@@ -1,0 +1,6 @@
+<%= form_for current_user.likes.build, remote: true do |f| %>
+  <div><%= hidden_field_tag :book_id, @lesson.id %></div>
+  <%= f.button nil, {class: "btn btn-basic"} do %>
+    <span><i class="fa fa-thumbs-up fa-1px"></i></span> <%= @lesson.likes.count.to_s + " " + "Like" %>
+  <% end %>
+<% end %>
