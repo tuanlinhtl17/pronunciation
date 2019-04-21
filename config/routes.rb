@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :lessons
+  resources :user_lessons
   resources :likes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

@@ -272,6 +272,13 @@ li {
   button {
     border-radius: 50%;
   }
+
+  .btn-success,
+  .btn-warning {
+    border-radius: 7% !important;
+  }
 }
 
-//progress
+.user-point {
+  background-color: #C0E1FF;
+}

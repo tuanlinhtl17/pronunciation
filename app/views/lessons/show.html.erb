@@ -3,6 +3,13 @@
     <div class="col-xs-12 product-list">
       <div class="row-border">
         <div class="show-product">
+          <% if @user_lesson %>
+            <div class="user-point">
+              <h3 class="text-center">You completed this lesson</h3>
+              <div class="text-center">Your point is: <strong><%= @user_lesson.point %></strong> / 500</div>
+            </div>
+            <hr>
+          <% end %>
           <%= image_tag @lesson.avatar_url, class: "center-block" %>
           <div class="center-block">
             <h3 class="text-center"><%= @lesson.title %></h3>
@@ -37,6 +44,18 @@
                     <br><br>
                   <% end %>
                 </ul>
+                <% if logged_in? && !@user_lesson %>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2 text-center">
+                    <button class="btn btn-success" id="submit"><i class="fa fa-arrow-right" aria-hidden="true"></i>Submit</button>
+                  </div>
+                  <div class="col-md-2 text-center">
+                    <button class="btn btn-warning" id="reset"><i class="fa fa-repeat" aria-hidden="true"></i>Reset</button>
+                  </div>
+                  <br />
+                  <div class="col-md-4"></div>
+                  <br />
+                <% end %>
               </div>
             </div>
             <br>

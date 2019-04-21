@@ -11,6 +11,7 @@ $(document).on('turbolinks:load', function () {
 
   var noteContent = '';
   var targetID;
+  var points = [];
 
   /*-----------------------------
         Voice Recognition 
@@ -43,6 +44,7 @@ $(document).on('turbolinks:load', function () {
 
       var message = $('#content_' + targetID).data("content");
       var point = Math.floor(similarity(message, noteContent) * 100);
+      points[targetID] = point;
       changeProgressBar(targetID, point);
     }
   };
@@ -69,13 +71,14 @@ $(document).on('turbolinks:load', function () {
         noteContent = $(this).val();
       })
     }
-  });
 
+
+  });
 
   /*-----------------------------
         Speech Synthesis 
   ------------------------------*/
-  $('.sentence .sound').on('click', function (e) {
+  $('.sound').on('click', function (e) {
     var message = $('#content_' + e.target.value).data("content");
     readOutLoud(message);
   });
@@ -87,7 +90,7 @@ $(document).on('turbolinks:load', function () {
     // Set the text and voice attributes.
     speech.text = message;
     speech.volume = 1;
-    speech.rate = 1;
+    speech.rate = 0.8;
     speech.pitch = 1;
 
     window.speechSynthesis.speak(speech);
@@ -136,20 +139,43 @@ $(document).on('turbolinks:load', function () {
     }
     return costs[s2.length];
   }
-});
 
-function changeProgressBar(id, point) {
-  var elem = $('#progress_' + id);
-  var width = 1;
-  var id = setInterval(frame, 1);
+  function changeProgressBar(id, point) {
+    var elem = $('#progress_' + id);
+    var width = 1;
+    var id = setInterval(frame, 1);
 
-  function frame() {
-    if (width >= point) {
-      clearInterval(id);
-    } else {
-      console.log(point);
-      width++;
-      elem.css('width', point + '%').html(point + '%');
+    function frame() {
+      if (width >= point) {
+        clearInterval(id);
+      } else {
+        width++;
+        elem.css('width', point + '%').html(point + '%');
+      }
     }
   }
-}
+
+  $('#submit').click(function (e) {
+    var totalPoint = points.reduce(function (a, b) {
+      return a + b;
+    });
+
+    $.ajax({
+      type: 'POST',
+      url: '/user_lessons',
+      data: {
+        lesson_id: gon.lesson_id,
+        total_point: totalPoint
+      }
+    });
+  });
+
+  $('#reset').click(function (e) {
+    $('textarea').html('');
+    $('.progress-bar').css('width', '0%').html(0 + '%');
+    clicked = false;
+    noteContent = '';
+    targetID = 0;
+    points = [];
+  });
+});
