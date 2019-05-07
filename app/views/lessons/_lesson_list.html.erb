@@ -9,6 +9,8 @@
       </div>
       <div class="col-md-7">
         <h4><%= link_to lesson.title, lesson %></h4>
+        <p><i class="fa fa-book" aria-hidden="true"></i> Learned times: <%= lesson.user_lessons.count %></p>
+        <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes: <%= lesson.likes.count %></p>
       </div>
     </div>
   <% end %>        

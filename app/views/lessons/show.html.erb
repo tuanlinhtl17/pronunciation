@@ -10,7 +10,7 @@
             </div>
             <hr>
           <% end %>
-          <%= image_tag @lesson.avatar_url, class: "center-block" %>
+          <%= image_tag @lesson.avatar_url, class: "center-block img-responsive" %>
           <div class="center-block">
             <h3 class="text-center"><%= @lesson.title %></h3>
             <div class="row">
@@ -62,7 +62,21 @@
                 
             <hr />
             <h3 class="card-header">Leave a Comment:</h3>
+            <!-- Comments Form -->
             <br>
+            <% if logged_in? %>
+              <div class="card my-4">
+                <div class="card-body">
+                  <%= render "comments/form" %>
+                </div>
+              </div>
+            <% end %>
+
+            <hr></hr>
+            <!-- Single Comment -->
+            <div id="comments" style="width: 80%">
+              <%= render partial: "comments/comment", collection: @comments %>
+            </div>
           </div>
         </div>
       </div>

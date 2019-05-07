@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :lessons
   resources :user_lessons
   resources :likes
+  resources :comments
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get '/search' => 'search#index'

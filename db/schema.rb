@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,59 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_419_101_140) do
-  create_table 'categories', force: :cascade do |t|
-    t.string 'title'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema.define(version: 2019_05_07_184716) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'lessons', force: :cascade do |t|
-    t.string 'avatar_url'
-    t.string 'title'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'category_id'
-    t.index ['category_id'], name: 'index_lessons_on_category_id'
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lesson_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_comments_on_lesson_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table 'likes', force: :cascade do |t|
-    t.integer 'lesson_id'
-    t.integer 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['lesson_id'], name: 'index_likes_on_lesson_id'
-    t.index ['user_id'], name: 'index_likes_on_user_id'
+  create_table "lessons", force: :cascade do |t|
+    t.string "avatar_url"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_lessons_on_category_id"
   end
 
-  create_table 'sentences', force: :cascade do |t|
-    t.string 'content'
-    t.integer 'lesson_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['lesson_id'], name: 'index_sentences_on_lesson_id'
+  create_table "likes", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_likes_on_lesson_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table 'user_lessons', force: :cascade do |t|
-    t.integer 'user_id'
-    t.integer 'lesson_id'
-    t.integer 'point'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['lesson_id'], name: 'index_user_lessons_on_lesson_id'
-    t.index ['user_id'], name: 'index_user_lessons_on_user_id'
+  create_table "sentences", force: :cascade do |t|
+    t.string "content"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_sentences_on_lesson_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.boolean 'is_admin', default: false, null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "user_lessons", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lesson_id"
+    t.integer "point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.boolean "is_admin", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "point", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
 end

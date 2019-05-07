@@ -1,0 +1,24 @@
+<div id="<%= comment.id %>">
+  <div class="media mb-4">
+    <div class="media-body">
+      <h4 class="mt-0"><strong><%= comment.user.email %></strong></h4>
+      <%= comment.content %>
+      <br>
+      <i><%= time_ago_in_words comment.created_at %></i>
+    </div>
+  </div>
+
+  <% if logged_in? %>
+    <% if (comment.user == current_user) || is_admin? %>
+      <li class="dropdown pull-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><%= link_to "Delete", comment, method: :delete,
+                      data: { confirm: "You sure?", remote: true } %></li>
+          <li><%= link_to "Edit", edit_comment_path(comment), remote: true %></li>
+        </ul>
+      </li>
+    <% end %>
+  <% end %>
+  <hr>
+</div>

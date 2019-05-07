@@ -3,6 +3,10 @@
 class LikesController < ApplicationController
   before_action :user_authenticated?
 
+  def index
+    @pagy, @lessons = pagy Lesson.where(id: current_user.likes.map(&:lesson_id)), limit: 10
+  end
+
   def create
     @lesson = Lesson.find_by id: params[:book_id]
     current_user.like @lesson, current_user
