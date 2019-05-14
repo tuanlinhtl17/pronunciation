@@ -8,6 +8,6 @@ class Lesson < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   scope :search_by_title, lambda { |title|
-    where 'title LIKE ?', "%#{title}%"
+    where('title LIKE ?', "%#{title}%").order(level: :asc)
   }
 end
